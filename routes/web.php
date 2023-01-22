@@ -39,3 +39,7 @@ Route::prefix('test')->group(static function () {
 });
 Route::middleware('json.bearer')->get('/uploads/post_projects/{mail}/{project_type}/{filename}', '\App\Http\Controllers\ProjectController@licenceFileShow');
 // 
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
