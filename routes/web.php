@@ -37,3 +37,5 @@ Route::prefix('test')->group(static function () {
     Route::get('/url', [\App\Http\Controllers\TestController::class, 'url'])
         ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 });
+Route::middleware('json.bearer')->get('/uploads/post_projects/{mail}/{project_type}/{filename}', '\App\Http\Controllers\ProjectController@licenceFileShow');
+// 
