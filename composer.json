@@ -12,7 +12,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "spiral/roadrunner-laravel": "^5.9",
-        "tcg/voyager": "^1.6"
+        "tcg/voyager": "^1.7"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.6",
