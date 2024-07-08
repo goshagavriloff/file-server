@@ -15,7 +15,7 @@
         "tcg/voyager": "^1.6"
     },
     "require-dev": {
-        "spatie/laravel-ignition": "^1.6",
+        "spatie/laravel-ignition": "^1.7",
         "fakerphp/faker": "^1.21.0",
         "laravel/sail": "^1.16.6",
         "mockery/mockery": "^1.5.1",
