@@ -17,65 +17,37 @@ class ExtensionSeeder extends Seeder
         
         Extension::truncate();
         Extension::Create(
-            ['name' => 'png','type_id'=>1]
+            ['name' => 'png','size'=>500]
         );
         Extension::Create(
-            ['name' => 'jpg','type_id'=>1]
+            ['name' => 'jpg','size'=>500]
         );
         Extension::Create(
-            ['name' => 'aep','type_id'=>1]
+            ['name' => 'aep','size'=>500]
         );
         Extension::Create(
-            ['name' => 'mkv','type_id'=>1]
+            ['name' => 'mkv','size'=>500]
         );
         Extension::Create(
-            ['name' => 'mp3','type_id'=>1]
+            ['name' => 'mp3','size'=>500]
         );  
                 Extension::Create(
-            ['name' => 'mp4','type_id'=>1]
+            ['name' => 'mp4','size'=>500]
         );  
 
         Extension::Create(
-            ['name' => 'prproj','type_id'=>2]
-        );
-        Extension::Create(
-            ['name' => 'mkv','type_id'=>2]
-        );
-        Extension::Create(
-            ['name' => 'mp3','type_id'=>2]
-        );
-        Extension::Create(
-            ['name' => 'mp4','type_id'=>2]
-        );   
-        Extension::Create(
-            ['name' => 'jpg','type_id'=>2]
-        );  
-        Extension::Create(
-            ['name' => 'png','type_id'=>2]
+            ['name' => 'prproj','size'=>500]
         );
 
         Extension::Create(
-            ['name' => 'drx','type_id'=>3]
+            ['name' => 'drx','size'=>500]
         );
         Extension::Create(
-            ['name' => 'drp','type_id'=>3]
-        );
-        Extension::Create(
-            ['name' => 'mp3','type_id'=>3]
-        );
-        Extension::Create(
-            ['name' => 'mp4','type_id'=>3]
-        ); 
-        
-        Extension::Create(
-            ['name' => 'zip','type_id'=>1]
-        );
-        Extension::Create(
-            ['name' => 'zip','type_id'=>2]
+            ['name' => 'drp','size'=>500]
         );
         
         Extension::Create(
-            ['name' => 'zip','type_id'=>3]
+            ['name' => 'zip','size'=>500]
         );
 
     }

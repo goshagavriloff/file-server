@@ -112,7 +112,14 @@ class WorkerController extends Controller
     public function show(Worker $worker)
     {
         
-        return response()->json($worker->all(), 200);
+        return response()->json($worker->all()->transform(function($w){
+        	return [
+        		'id'=>$w->id,
+        		'first_name'=>$w->first_name,
+				'last_name'=>$w->last_name,
+				'mail'=>$w->mail
+				];
+        }), 200);
     }
 
     /**

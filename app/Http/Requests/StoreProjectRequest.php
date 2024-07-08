@@ -7,8 +7,10 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\Models\VideoRolling\Project;
 use Illuminate\Validation\ValidationException;
 use App\Models\Models\VideoRolling\ProjectType;
+use App\Models\Models\VideoRolling\Extension;
 
 class StoreProjectRequest extends FormRequest
 {
@@ -35,18 +37,27 @@ class StoreProjectRequest extends FormRequest
             $types=ProjectType::whereName($name)->first();
 
             $mimes=$types->extensions->transform(function ($ext){
-                return $ext->name; 
+                return $ext->title->name; 
             });
+            
+            $file=$this->file('project');
 
+            if (is_null($file)){
+                return [
+                    'project' => 'file'
+                ];  
+            }
+            
             if ($mimes->count()==0){
                 throw ValidationException::withMessages(['extensions' => 'extensions not exist']);
             }
-
-            $ext='|mimes:'.$mimes->join(',').'|';
             
+            $ext='|mimes:'.$mimes->join(',').'|';
+            $size=Extension::whereName($file->extension())->first()->size;
+            $kbsize=$size*1024;//2048*1024
+
             return [
-                'project' => 'file|required'.$ext.'max:2097152',
-                'name' => 'required|exists:project_types,name'
+                'project' => 'file|required'.$ext.'max:'.$kbsize
             ];
             
 

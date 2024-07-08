@@ -11,6 +11,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Models\VideoRolling\Project;
 use App\Models\Models\VideoRolling\ProjectType;
+use App\Models\Models\VideoRolling\Extension;
 class UpdateProjectRequest extends FormRequest
 {
     /**
@@ -38,17 +39,27 @@ class UpdateProjectRequest extends FormRequest
             $types=$project->project_type;
 
             $mimes=$types->extensions->transform(function ($ext){
-                return $ext->name; 
+                return $ext->title->name; 
             });
+            
+            $file=$this->file('project');
 
+            if (is_null($file)){
+                return [
+                    'project' => 'file'
+                ];  
+            }
+            
             if ($mimes->count()==0){
                 throw ValidationException::withMessages(['extensions' => 'extensions not exist']);
             }
-
-            $ext='|mimes:'.$mimes->join(',').'|';
             
+            $ext='|mimes:'.$mimes->join(',').'|';
+            $size=Extension::whereName($file->extension())->first()->size;
+            $kbsize=$size*1024;//2048*1024
+
             return [
-                'project' => 'file|required'.$ext.'max:2097152'
+                'project' => 'file|required'.$ext.'max:'.$kbsize
             ];
             
 

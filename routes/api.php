@@ -22,7 +22,7 @@ Route::group(['middleware' => ['json.response']], function() {
     Route::post('/login','\App\Http\Controllers\WorkerController@login');//success
     Route::post('/register','\App\Http\Controllers\WorkerController@register');//success
 
-    // Route::get('/workers','\App\Http\Controllers\WorkerController@show');//delete me
+Route::get('/workers','\App\Http\Controllers\WorkerController@show');//success
     Route::group(['middleware' => ['json.bearer']], function() {
 
         Route::post('/logout','\App\Http\Controllers\WorkerController@logout');//success
